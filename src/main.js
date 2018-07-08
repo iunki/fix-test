@@ -3,6 +3,8 @@ import App from './App'
 import router from './router'
 import Vuex from 'vuex'
 
+require('./utils/validator-config')
+
 Vue.config.productionTip = false
 
 Vue.use(Vuex)

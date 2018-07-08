@@ -30,6 +30,10 @@ export default {
     align-items: center;
   }
 
+  .text-center {
+    text-align: center;
+  }
+
   .page {
     height: 100vh;
     min-height: 100vh;
@@ -91,9 +95,9 @@ export default {
         background-color: darken($primary, 5%);
       }
     }
-    &_disabled {
+    &:disabled {
       pointer-events: none;
-      background-color: #e6e6e6;
+      background-color: #bcbcbc;
     }
     &:focus, &:active {
       outline: none;

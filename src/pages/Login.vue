@@ -3,21 +3,28 @@
     <div class="center">
       <div class="box">
         <form class="form" @submit.prevent="login">
+          <div class="form__group form__error text-center" v-show="authError">
+            {{authError}}
+          </div>
           <div class="form__group">
             <label for="login" class="form__label">Логин</label>
             <input type="text"
-                   v-model="user.email"
+                   v-model="user.login"
                    v-validate="'required|email'"
                    name="login" id="login" class="form__control"
                    placeholder="Введите логин" autofocus>
-            <p class="form__error"></p>
+            <p class="form__error" v-show="fields.login && fields.login.touched">{{errors.first('login')}}</p>
           </div>
           <div class="form__group">
             <label for="password" class="form__label">Пароль</label>
-            <input type="password" v-model="user.password" name="password" id="password" class="form__control"
+            <input type="password"
+                   v-model="user.password"
+                   v-validate="'required'"
+                   name="пароль" id="password" class="form__control"
                    placeholder="Введите пароль">
+            <p class="form__error" v-show="fields.password && fields.password.touched">{{errors.first('password')}}</p>
           </div>
-          <button type="submit" class="btn btn_block btn_primary">Войти</button>
+          <button type="submit" class="btn btn_block btn_primary" :disabled="isFormDirty">Войти</button>
         </form>
       </div>
     </div>
@@ -32,22 +39,31 @@ export default {
   data () {
     return {
       user: {
-        email: '',
+        login: '',
         password: ''
-      }
+      },
+      authError: ''
+    }
+  },
+  computed: {
+    isFormDirty () {
+      return Object.keys(this.fields).some(key => this.fields[key].invalid)
     }
   },
   methods: {
     login () {
-      AuthService.login(this.user).then(
-        (res) => {
-          console.log(res)
-          this.$router.push(this.$route.query.next)
-        },
-        (error) => {
-          console.log(error)
+      this.$validator.validateAll().then((result) => {
+        if (result) {
+          AuthService.login(this.user).then(
+            (res) => {
+              this.$router.push(this.$route.query.next)
+            },
+            (error) => {
+              this.authError = error.message
+            }
+          )
         }
-      )
+      })
     }
   }
 }
@@ -57,8 +73,9 @@ export default {
   .center {
     height: 100%;
   }
+
   .box {
-    width: 380px;
+    width: 400px;
     max-width: 100%;
   }
 </style>

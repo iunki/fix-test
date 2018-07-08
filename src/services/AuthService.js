@@ -2,11 +2,11 @@ import store from '@/store'
 
 const users = [
   {
-    email: 'test@example.com',
+    login: 'test@example.com',
     password: '123123'
   },
   {
-    email: 'hello@world.com',
+    login: 'hello@world.com',
     password: 'helloworld'
   }
 ]
@@ -14,7 +14,7 @@ const users = [
 const AuthService = {
   login (payload) {
     return new Promise((resolve, reject) => {
-      const user = users.find((x) => (x.email === payload.email) && (x.password === payload.password))
+      const user = users.find((x) => (x.login === payload.login) && (x.password === payload.password))
       if (user) {
         store.dispatch('setUser', user)
         resolve(user)
