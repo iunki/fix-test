@@ -40,6 +40,9 @@ export default {
     &_bg {
       background: $gradient;
     }
+    &_sidebar {
+      display: flex;
+    }
   }
 
   .container {
