@@ -9,7 +9,13 @@
     <slot>
       <div class="sidebar__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum delectus, deleniti distinctio dolor ducimus
         error eveniet facere facilis impedit minus mollitia necessitatibus, nesciunt obcaecati quam qui quos
-        repudiandae! Asperiores, earum?
+        repudiandae!<br> <br>
+        <b>
+        Шаг 1. Ввод данных<br><br>
+        Шаг 2. Проверка<br><br>
+        Шаг 3. Расчет<br><br>
+        Шаг 4. Результат<br><br>
+        </b>
       </div></slot>
   </div>
 </template>
@@ -38,12 +44,14 @@ export default {
 <style scoped lang="scss">
   .sidebar {
     width: 50%;
+    min-width: 50%;
     height: 100%;
     background: $gradient;
     padding: 30px;
     color: #314a46;
     &__title {
       font-size: 3.7em;
+      font-weight: inherit;
     }
     &__description {
       font-size: 1.3em;

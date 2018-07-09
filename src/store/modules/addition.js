@@ -1,10 +1,28 @@
-const state = {}
+const state = {
+  numbers: []
+}
 
-const getters = {}
+const getters = {
+  numbers: state => state.numbers
+}
 
-const actions = {}
+const actions = {
+  setNumbers ({commit}, numbers) {
+    commit('SET_NUMBERS', numbers)
+  },
+  addNumber ({commit}, number) {
+    commit('ADD_NUMBER', number)
+  }
+}
 
-const mutations = {}
+const mutations = {
+  ADD_NUMBER (state, number) {
+    state.numbers.push(number)
+  },
+  SET_NUMBERS (state, numbers) {
+    state.numbers = numbers
+  }
+}
 
 export default {
   state,

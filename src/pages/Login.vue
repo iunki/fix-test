@@ -3,7 +3,7 @@
     <div class="center">
       <div class="box">
         <form class="form" @submit.prevent="login">
-          <div class="form__group form__error text-center" v-show="authError">
+          <div class="form__group form__error" v-show="authError">
             {{authError}}
           </div>
           <div class="form__group">

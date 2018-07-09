@@ -1,3 +1,8 @@
+const state = {
+  isAuthorized: false,
+  user: ''
+}
+
 const getters = {
   isAuthorized: state => state.isAuthorized,
   user: state => state.user
@@ -10,11 +15,6 @@ const actions = {
   logout ({commit}) {
     commit('LOGOUT')
   }
-}
-
-const state = {
-  isAuthorized: false,
-  user: ''
 }
 
 const mutations = {

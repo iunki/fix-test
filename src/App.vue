@@ -20,8 +20,9 @@ export default {
   body {
     /*font-family: 'Open Sans', sans-serif;*/
     font-family: 'Roboto', sans-serif;
+    font-weight: 300;
     font-size: 18px;
-    color: #232323;
+    color: #292929;
   }
 
   .center {
@@ -37,6 +38,9 @@ export default {
   .page {
     height: 100vh;
     min-height: 100vh;
+    @media all and (max-width: 790px) {
+      height: auto;
+    }
     &_bg {
       background: $gradient;
     }
@@ -51,6 +55,11 @@ export default {
   }
 
   .form {
+    &_sm {
+      margin: 0 auto;
+      width: 480px;
+      max-width: 100%;
+    }
     &__group {
       margin-bottom: 1.7em;
     }
@@ -64,6 +73,7 @@ export default {
       border: 1px solid $light;
       box-shadow: none;
       width: 100%;
+      max-width: 100%;
       &:focus {
         outline: none;
         border-color: darken($light, 20%);
@@ -77,13 +87,13 @@ export default {
   .btn {
     cursor: pointer;
     box-shadow: none;
-    padding: 15px 30px;
+    padding: 15px 40px;
     font-weight: inherit;
     border-radius: 5px;
     color: inherit;
     text-decoration: none;
     background-color: $light;
-    border: none;
+    border: 1px solid transparent;
     &:hover {
       background-color: darken($light, 5%);
     }
@@ -97,6 +107,9 @@ export default {
       &:hover {
         background-color: darken($primary, 5%);
       }
+      &:focus, &:active {
+        border: 1px solid darken($primary, 5%);
+      }
     }
     &:disabled {
       pointer-events: none;
@@ -104,6 +117,7 @@ export default {
     }
     &:focus, &:active {
       outline: none;
+      border: 1px solid darken($light, 5%);
     }
   }
 
