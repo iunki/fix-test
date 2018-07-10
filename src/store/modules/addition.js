@@ -1,9 +1,11 @@
 const state = {
-  numbers: []
+  numbers: [],
+  summ: null
 }
 
 const getters = {
-  numbers: state => state.numbers
+  numbers: state => state.numbers,
+  sum: state => state.summ
 }
 
 const actions = {
@@ -12,6 +14,9 @@ const actions = {
   },
   addNumber ({commit}, number) {
     commit('ADD_NUMBER', number)
+  },
+  setSum ({commit}, value) {
+    commit('SET_SUM', value)
   }
 }
 
@@ -21,6 +26,9 @@ const mutations = {
   },
   SET_NUMBERS (state, numbers) {
     state.numbers = numbers
+  },
+  SET_SUM (state, value) {
+    state.summ = value
   }
 }
 

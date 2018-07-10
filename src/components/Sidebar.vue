@@ -45,7 +45,11 @@ export default {
   .sidebar {
     width: 50%;
     min-width: 50%;
-    height: 100%;
+    height: 100vh;
+    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
     background: $gradient;
     padding: 30px;
     color: #314a46;

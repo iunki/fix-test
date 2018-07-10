@@ -25,6 +25,7 @@ export default {
   .step {
     display: inline-block;
     width: 100%;
+    height: 100%;
     white-space: normal;
     &__content {
       flex: 1;

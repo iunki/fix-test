@@ -44,9 +44,6 @@ export default {
     &_bg {
       background: $gradient;
     }
-    &_sidebar {
-      display: flex;
-    }
   }
 
   .container {
@@ -84,7 +81,7 @@ export default {
     }
   }
 
-  .btn {
+  .btn, .select {
     cursor: pointer;
     box-shadow: none;
     padding: 15px 40px;
@@ -125,5 +122,18 @@ export default {
     padding: 30px;
     background-color: #fff;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  }
+
+  .table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    text-align: left;
+    th {
+      font-weight: 600;
+      &:first-child {
+        width: 50px;
+      }
+    }
   }
 </style>

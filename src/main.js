@@ -2,8 +2,7 @@ import Vue from 'vue'
 import App from './App'
 import store from './store/index'
 import router from './router'
-
-require('./utils/validator-config')
+import './utils/validator-config'
 
 Vue.config.productionTip = false
 

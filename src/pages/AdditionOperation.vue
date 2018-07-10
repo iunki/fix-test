@@ -1,5 +1,5 @@
 <template>
-  <div class="page page_sidebar">
+  <div class="">
     <Sidebar></Sidebar>
     <div class="box main">
       <div class="steps">
@@ -19,32 +19,26 @@
             <template slot="title">Шаг 2. Проверка.</template>
             <template slot="descr">
               Проверьте введенные данные.<br>
-              Для сортировки нажмите кнопку "Сортировка".
             </template>
             <NumberCheck/>
           </Step>
 
-          <transition name="slide">
-            <div class="step" v-show="currStep===2">
-              <div class="step__title">Шаг 3.</div>
-              <div class="step__descr text-center">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur debitis dignissimos fuga fugit
-                harum
-                id natus nisi, officia officiis pariatur quaerat, sed, vel? Adipisci cum dolorum, nostrum quae quis
-                tenetur.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur debitis dignissimos fuga fugit
-                harum
-                id natus nisi, officia officiis pariatur quaerat, sed, vel? Adipisci cum dolorum, nostrum quae quis
-                tenetur.
-              </div>
+          <Step :show="currStep === 2">
+            <template slot="title">Шаг 3. Расчет.</template>
+            <NumberCalculation/>
+          </Step>
 
-            </div>
-          </transition>
+          <Step :show="currStep === 3">
+            <template slot="title">Шаг 4. Результат.</template>
+            <NumberResult/>
+          </Step>
+
         </div>
 
         <div class="steps__footer">
-          <button type="button" class="btn f-l" v-if="currStep!==0" @click="goPrevStep">Назад</button>
-          <button type="button" class="btn f-r" @click="goNextStep">Продолжить</button>
+          <button type="button" class="btn f-l" v-if="currStep !== 0" @click="goPrevStep">{{backBtnText}}</button>
+          <button type="button" class="btn f-r" v-if="currStep !== stepsCount - 1" @click="goNextStep">Продолжить
+          </button>
         </div>
 
       </div>
@@ -56,28 +50,42 @@ import Sidebar from '@/components/Sidebar'
 import Step from '@/components/steps/Step'
 import NumberInput from '@/components/steps/NumberInput'
 import NumberCheck from '@/components/steps/NumberCheck'
+import NumberCalculation from '@/components/steps/NumberCalculation'
+import NumberResult from '@/components/steps/NumberResult'
 
 export default {
   name: 'AdditionOperation',
   data () {
     return {
       currStep: 0,
+      stepsCount: 4,
       isSlidingToPrevious: false,
       steps: [
         {}
       ]
     }
   },
+  computed: {
+    backBtnText () {
+      return this.currStep === this.stepsCount - 1 ? 'Вернуться к вводу данных' : 'Назад'
+    }
+  },
   components: {
     Sidebar,
     Step,
     NumberInput,
-    NumberCheck
+    NumberCheck,
+    NumberCalculation,
+    NumberResult
   },
   methods: {
     goPrevStep () {
       this.isSlidingToPrevious = true
-      this.currStep--
+      if (this.currStep === this.stepsCount - 1) {
+        this.currStep = 0
+      } else {
+        this.currStep--
+      }
     },
     goNextStep () {
       this.isSlidingToPrevious = false
@@ -90,10 +98,14 @@ export default {
 }
 </script>
 
-
 <style scoped lang="scss">
   .box {
     width: 50%;
+  }
+
+  .main {
+    margin-left: 50%;
+    min-height: 100vh;
   }
 
   .steps {
@@ -105,10 +117,10 @@ export default {
     display: flex;
     flex-direction: column;
     margin: 0 auto;
+    overflow-x: hidden;
     &__body {
       flex: 1;
       margin-bottom: 60px;
-      overflow-x: hidden;
       white-space: nowrap;
     }
   }
@@ -181,6 +193,8 @@ export default {
   @media all and (max-width: 790px) {
     .main {
       width: 100%;
+      padding: 0;
+      margin-left: 0;
     }
   }
 </style>
