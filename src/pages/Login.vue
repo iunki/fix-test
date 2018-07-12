@@ -56,7 +56,11 @@ export default {
         if (result) {
           AuthService.login(this.user).then(
             (res) => {
-              this.$router.push(this.$route.query.next)
+              if (this.$route.query.next) {
+                this.$router.push(this.$route.query.next)
+              } else {
+                this.$router.push('/addition')
+              }
             },
             (error) => {
               this.authError = error.message
