@@ -5,8 +5,8 @@
       <div class="select-wrapper">
         <select class="form__control" v-model="sorting" @change="filterNumbers">
           <option value="">Без сортировки</option>
-          <option value="1">По возрастанию</option>
-          <option value="-1">По убыванию</option>
+          <option value="asc">По возрастанию</option>
+          <option value="desc">По убыванию</option>
         </select>
       </div>
     </div>
@@ -46,16 +46,14 @@ export default {
   },
   methods: {
     filterNumbers () {
-      console.log('asd')
       this.filteredNumbers = this.numbers.filter(x => x.includes(this.search)).sort((a, b) => {
         switch (this.sorting) {
-          case '1':
+          case 'asc':
             return bigInt(a).minus(b)
-          case '-1':
+          case 'desc':
             return bigInt(b).minus(a)
         }
       })
-      console.log('qwe')
     }
   },
   mounted () {

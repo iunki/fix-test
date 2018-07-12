@@ -1,23 +1,26 @@
 <template>
-  <transition name="slide">
-    <div class="step" v-if="show">
-      <div class="step__title">
-        <slot name="title"></slot>
-      </div>
-      <div class="step__descr text-center">
-        <slot name="descr"></slot>
-      </div>
-      <div class="step__content">
-        <slot></slot>
-      </div>
+  <div class="step">
+    <div class="step__title">
+      <slot name="title"></slot>
     </div>
-  </transition>
+    <div class="step__descr text-center">
+      <slot name="descr"></slot>
+    </div>
+    <div class="step__content">
+      <slot></slot>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
   name: 'Step',
-  props: ['show']
+  props: ['title'],
+  created () {
+    if (this.title) {
+      document.title = this.title
+    }
+  }
 }
 </script>
 
@@ -38,35 +41,6 @@ export default {
       font-size: 1.3em;
       margin-bottom: 2em;
       text-align: center;
-    }
-  }
-
-  .slide-leave-active {
-    transition: 0.2s;
-  }
-
-  .slide-enter-active {
-    transition: 0.5s;
-  }
-
-  .slide-enter {
-    transform: translate(50%, 0);
-    opacity: 0;
-  }
-
-  .slide-leave-to {
-    transform: translate(-50%, 0);
-    opacity: 0;
-  }
-
-  .sliding-to-prev {
-    .slide-enter {
-      transform: translate(-50%, 0);
-      opacity: 0;
-    }
-    .slide-leave-to {
-      transform: translate(50%, 0);
-      opacity: 0;
     }
   }
 

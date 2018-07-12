@@ -18,7 +18,6 @@ export default {
   }
 
   body {
-    /*font-family: 'Open Sans', sans-serif;*/
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
     font-size: 18px;
@@ -111,6 +110,7 @@ export default {
     &:disabled {
       pointer-events: none;
       background-color: #bcbcbc;
+      color: #fff;
     }
     &:focus, &:active {
       outline: none;

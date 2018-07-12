@@ -53,6 +53,7 @@ export default {
     background: $gradient;
     padding: 30px;
     color: #314a46;
+    box-shadow: inset 0 -3px 6px rgba(0, 0, 0, 0.4);
     &__title {
       font-size: 3.7em;
       font-weight: inherit;

@@ -7,18 +7,21 @@
       </tr>
       <tr v-for="(number, index) in numbers" :key="index">
         <td>{{index + 1}}</td>
-        <td>{{number}}</td>
+        <td :class="{'text-green': greater(number, 10)}">{{number}}</td>
       </tr>
     </table>
 
     <div class="result">
-      <span>Результат: </span>{{sum.toString()}}
+      <span>Результат: </span>
+      <span :class="{'text-green': greater(sum, 10)}">{{sum.toString()}}</span>
     </div>
 
   </div>
 </template>
 
 <script>
+import bigInt from 'big-integer'
+
 export default {
   name: 'NumberResult',
   data () {
@@ -31,6 +34,11 @@ export default {
     sum () {
       return this.$store.getters.sum
     }
+  },
+  methods: {
+    greater (a, b) {
+      return bigInt(a).greater(b)
+    }
   }
 }
 </script>
@@ -40,5 +48,8 @@ export default {
     margin: 30px 0;
     word-break: break-all;
     font-size: 2em;
+  }
+  .text-green {
+    color: $primary;
   }
 </style>

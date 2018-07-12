@@ -21,6 +21,7 @@ import bigInt from 'big-integer'
 
 export default {
   name: 'NumberInput',
+  props: ['onValid', 'onInvalid'],
   data () {
     return {}
   },
@@ -29,11 +30,18 @@ export default {
       return this.$store.getters.numbers
     },
     numbersIsValid () {
+      let isValid = false
       try {
-        return this.numbers.filter(x => !bigInt(x).isPositive()).length === 0
+        isValid = this.numbers.filter(x => !bigInt(x).isPositive()).length === 0
       } catch (e) {
-        return false
+        isValid = false
       }
+      if (isValid) {
+        this.onValid()
+      } else {
+        this.onInvalid()
+      }
+      return isValid
     }
   },
   methods: {
@@ -45,7 +53,7 @@ export default {
     }
   },
   mounted () {
-    this.$store.dispatch('setNumbers', ['12333232', '435345345', '2382332222277328', '123123', '234324'])
+    this.$store.dispatch('setNumbers', ['', ''])
     this.$store.dispatch('setSum', null)
   }
 }
