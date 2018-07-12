@@ -1,21 +1,30 @@
-# fix-test
+# Приложение для подсчета суммы чисел
 
-> A Vue.js project
-
-## Build Setup
+### Инструкция по сборке
 
 ``` bash
-# install dependencies
+# установить зависимости
 npm install
 
-# serve with hot reload at localhost:8080
+# запустить приложение с hot reload на localhost:8080
 npm run dev
 
-# build for production with minification
+# собрать готовое к выпуску приложение с минификацией
 npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
 ```
+### Описание структуры папок первого уровня
+    .
+    ├── build                   # Настройки для сборки приложения
+    ├── config                  # Конфигурация для dev сервера, env файлы
+    ├── dist                    # Готовое к выпуску приложение
+    ├── node_modules            # Внешние библиотеки
+    ├── src                     # Файлы исходного кода
+    └── static                  # Статичные файлы, которые копируются при сборке
+  
+#### Данные для входа  
+описаны в `src/services/AuthService.js`
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+| Логин           | Пароль     |
+| ----------------|------------|
+| test@example.com| 123123     |
+| hello@world.com | helloworld |
