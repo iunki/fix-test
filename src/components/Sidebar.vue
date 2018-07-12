@@ -1,22 +1,26 @@
 <template>
   <div class="sidebar">
-    <div class="user text-center">
+    <div class="text-center">
       Привет, <span>{{login | secureEmail | capitalize}}</span>!
     </div>
     <h1 class="sidebar__title">
       <slot>Операция сложения</slot>
     </h1>
     <slot>
-      <div class="sidebar__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum delectus, deleniti distinctio dolor ducimus
-        error eveniet facere facilis impedit minus mollitia necessitatibus, nesciunt obcaecati quam qui quos
-        repudiandae!<br> <br>
-        <b>
-        Шаг 1. Ввод данных<br><br>
-        Шаг 2. Проверка<br><br>
-        Шаг 3. Расчет<br><br>
-        Шаг 4. Результат<br><br>
-        </b>
-      </div></slot>
+      <div class="sidebar__description">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum delectus, deleniti distinctio dolor ducimus
+          error eveniet facere facilis impedit minus mollitia necessitatibus, nesciunt obcaecati quam qui quos
+          repudiandae!
+        </p>
+        <ul class="list">
+          <li class="list__item">Шаг 1. Ввод данных</li>
+          <li class="list__item">Шаг 2. Проверка</li>
+          <li class="list__item">Шаг 3. Расчет</li>
+          <li class="list__item">Шаг 4. Результат</li>
+        </ul>
+      </div>
+    </slot>
   </div>
 </template>
 
@@ -60,6 +64,15 @@ export default {
     }
     &__description {
       font-size: 1.3em;
+    }
+  }
+
+  .list {
+    padding: 0;
+    list-style: none;
+    &__item {
+      font-weight: 500;
+      margin-bottom: 20px;
     }
   }
 

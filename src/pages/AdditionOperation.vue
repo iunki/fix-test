@@ -113,28 +113,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
-  .clearfix:after {
-    visibility: hidden;
-    display: block;
-    font-size: 0;
-    content: " ";
-    clear: both;
-    height: 0;
-  }
-
-  .clearfix {
-    display: inline-block;
-  }
-
-  * html .clearfix {
-    height: 1%;
-  }
-
-  .clearfix {
-    display: block;
-  }
-
   .main {
     margin-left: 50%;
     width: 50%;
@@ -142,7 +120,7 @@ export default {
   }
 
   .steps {
-    padding: 80px 0;
+    padding: 80px 15px;
     height: 100%;
     width: 100%;
     max-width: 100%;
@@ -182,12 +160,6 @@ export default {
     align-items: center;
   }
 
-  .container {
-    flex: 1;
-    padding-left: 30px;
-    padding-right: 30px;
-  }
-
   .slide-leave-active {
     transition: 0.2s;
   }
@@ -225,11 +197,14 @@ export default {
     float: right;
   }
 
-  @media all and (max-width: 790px) {
+  @media all and (max-width: $md) {
     .main {
       width: 100%;
       padding: 0;
       margin-left: 0;
+    }
+    .steps {
+      padding: 15px 0;
     }
   }
 </style>

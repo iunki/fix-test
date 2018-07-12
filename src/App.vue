@@ -22,6 +22,22 @@ export default {
     font-weight: 300;
     font-size: 18px;
     color: #292929;
+    @media all and (max-width: $md){
+      font-size: 14px;
+    }
+  }
+
+  .clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+
+  .clearfix {
+    display: inline-block;
   }
 
   .center {
@@ -37,9 +53,6 @@ export default {
   .page {
     height: 100vh;
     min-height: 100vh;
-    @media all and (max-width: 790px) {
-      height: auto;
-    }
     &_bg {
       background: $gradient;
     }
