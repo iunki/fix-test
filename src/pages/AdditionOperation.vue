@@ -40,13 +40,13 @@
 
           <div class="steps__footer clearfix">
             <button type="button" class="btn f-l"
-                    v-if="currStep !== 0"
+                    v-show="currStep !== 0"
                     @click="goPrevStep"
                     :disabled="btnDisabled">
-              {{backBtnText}}
+              {{prevBtnText}}
             </button>
             <button type="button" class="btn f-r"
-                    v-if="currStep !== stepsCount - 1"
+                    v-show="currStep !== stepsCount - 1"
                     @click="goNextStep"
                     :disabled="btnDisabled">
               Продолжить
@@ -76,7 +76,8 @@ export default {
     }
   },
   computed: {
-    backBtnText () {
+    // иногда не обновляется dom :(
+    prevBtnText () {
       return this.currStep === this.stepsCount - 1 ? 'Вернуться к вводу данных' : 'Назад'
     }
   },

@@ -32,7 +32,8 @@ export default {
     numbersIsValid () {
       let isValid = false
       try {
-        isValid = this.numbers.filter(x => !bigInt(x).isPositive()).length === 0
+        // положительное целое число
+        isValid = this.numbers.filter(x => !/^\d+$/.test(x) || !bigInt(x).isPositive()).length === 0
       } catch (e) {
         isValid = false
       }

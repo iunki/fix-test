@@ -15,7 +15,7 @@
         <th>№</th>
         <th>Число</th>
       </tr>
-      <tr v-for="(number, index) in filteredNumbers">
+      <tr v-for="(number, index) in filteredNumbers" :key="index">
         <td>{{index + 1}}</td>
         <td>{{number}}</td>
       </tr>
